@@ -14,9 +14,10 @@ public class Mastermind_SF_LB {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // testlele
         
-        //test scott
+        Grille g = new Grille();
+        g.Code();
+        
     }
     
 }
