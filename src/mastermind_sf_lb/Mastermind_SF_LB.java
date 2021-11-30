@@ -15,6 +15,8 @@ public class Mastermind_SF_LB {
      */
     public static void main(String[] args) {
         // TODO code application logic here
+        
+        //test scott
     }
     
 }
