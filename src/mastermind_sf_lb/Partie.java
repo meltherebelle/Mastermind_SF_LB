@@ -10,4 +10,5 @@ package mastermind_sf_lb;
  */
 public class Partie {
     
+    
 }

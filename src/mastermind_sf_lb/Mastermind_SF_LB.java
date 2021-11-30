@@ -15,8 +15,11 @@ public class Mastermind_SF_LB {
      */
     public static void main(String[] args) {
         
-        Grille g = new Grille();
-        g.Code();
+        Combinaison cs = new Combinaison();
+        cs.combinaisonSecrete(); //génère une combinaison secrete
+        
+        Combinaison cc = new Combinaison();
+        cc.combinaisonChoisie();
         
     }
     
