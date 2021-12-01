@@ -12,6 +12,7 @@ import java.util.Scanner;
  * @author scottfullagar
  */
 public class Combinaison {
+
     
     public String [] combinaisonSecrete() {
         
@@ -33,25 +34,38 @@ public class Combinaison {
             combSecret[i] = TabCouleur[c];
         }
         
-        
-        System.out.println(Arrays.toString(combSecret));
+        System.out.println("La combinaison secrète tirée aléatoirement est : "+Arrays.toString(combSecret));
         return combSecret;
     }
    
+    
+    
     public String [] combinaisonChoisie() {
     
+        //on remet le tabcouleur ici en attendant de trouver une nouvelle organisation dans le code pour y acceder sans le remettre dans chaque méthode (ex --> creer une nouvelle classe de Couleur et methode TabCouelur)
+        String TabCouleur[] = new String[6];
+        TabCouleur[0] = "Rouge";
+        TabCouleur[1] = "Jaune";
+        TabCouleur[2] = "Vert";
+        TabCouleur[3] = "Bleu";
+        TabCouleur[4] = "Orange";
+        TabCouleur[5] = "Magenta";
+        
+        
         String [] combChoisie = new String[4]; //tableau de la combinaison entrée par le joueur
         
         Scanner sc = new Scanner(System.in);
         
-        //on entre la combinaison choisie par le joueur combChoisie[0] --> combChoisie[4]
+        System.out.println("Entrez un numéro pour choisir une combinaison de couleur :\n0. Rouge\n1. Jaune\n2. Vert \n3. Bleu\n4. Orange\n5. Magenta");
+       
         for (int i = 0; i<4; i++) {
-            System.out.println("Entrez une couleur parmi celle proposées dans TabCouleur :.....FAIRE LISTE AVEC NUM.....");
+            int num = i+1;
+            System.out.println("choix de la couleur n° "+ num +": ");
             int choixmenu = sc.nextInt();
-            combChoisie[i] = "Rouge"; //TabCouleur[choixmenu]; A CONTINUER
+            combChoisie[i] = TabCouleur[choixmenu]; //A CONTINUER
         }
         
-        System.out.print("combinaison choisie : "+Arrays.toString(combChoisie));
+        System.out.print("La combinaison choisie est : "+Arrays.toString(combChoisie));
         return combChoisie;
     }
     
