@@ -62,34 +62,37 @@ public class Combinaison {
             int choixmenu = sc.nextInt();
             combChoisie[i] = TabCouleur[choixmenu]; //A CONTINUER
         }
-        System.out.print("La combinaison choisie est : " + Arrays.toString(combChoisie));
+        System.out.println("La combinaison choisie est : " + Arrays.toString(combChoisie));
 
         return combChoisie;
     }
 
     //compare la combinaison secrete et la combinaison choisie
     //renvoie le nombre de bonnes couleurs et le nombre de bonne couleur+placement
-    public int[] Comparaison(String [] combS, String [] combC) {
+    public int[] Comparaison(String[] combS, String[] combC) {
 
         int nbCoul_OK = 0;
         int nbCoul_PlacmtOK = 0;
         String[] MorganC = {"0","0","0","0"};
         String[] MorganS = {"0","0","0","0"};
         
+        
+        //ces 2 boucles servent à supprimer les doublons dans les choix de comb entrées
         for (int i = 0; i < 4; i++) {
-            if(!MorganC.contains(combC[i])) {
-                MorganC[i] = combC[i];//exist dans un tableau de string
-                System.out.println("doublon trouvés dans choisi "+MorganC[i]);
+            if(!MorganC[i].contains(combC[i])) {
+                MorganC[i] = combC[i]; //exist dans un tableau de string
+                System.out.println("doublon trouvé dans choisi "+MorganC[i]);
             }
             else {
                 MorganC[i]="x"; //rien --> pas de doublon
                 System.out.println(MorganC[i]);
             } 
         }
+        
         for (int i = 0; i < 4; i++) {
-            if(!MorganS[i].contains(combC[i])) {
-                MorganS[i] = combC[i];
-                System.out.println("doublon trouvés dans secret "+MorganS[i]);
+            if(!MorganS[i].contains(combS[i])) {
+                MorganS[i] = combS[i];
+                System.out.println("doublon trouvé dans secret "+MorganS[i]);
             }
             else {
                 MorganS[i]="y"; //rien --> pas de doublon
@@ -101,15 +104,16 @@ public class Combinaison {
         
         for (int i=0; i<4; i++){
             
-            for (int j=0; j<4; j++) {
+            for (int j=0; j<4; j++) { //A CORRIGER pour rendre nb coul OK fonctionnel
                 //on détermine le nb de couleurs présentent à la fois dans la comb Chosie et Secrete
                 if ( MorganS[i].equals(MorganC[j]) ) { //combC[j].equals(combS[i])
                     nbCoul_OK +=1;
-                    
+                    System.out.println("+1 couleur OK");
                 }
                 
                 //on détermine le nb de couleurs présentent à la fois dans la comb Chosie et Secrete & aussi bien placées!
                 if ( (combC[j].equals(combS[i])) && (combC[i].equals(combS[i])) ) {
+                    System.out.println("+1 couleur placée OK");
                     nbCoul_PlacmtOK+=1;
                 }
             }
@@ -121,7 +125,7 @@ public class Combinaison {
         NB_OK[1] = nbCoul_PlacmtOK;
         System.out.print(Arrays.toString(NB_OK));*/
         int[] arrayNB_OK = new int[] {nbCoul_OK, nbCoul_PlacmtOK};
-        System.out.println("coul : "+arrayNB_OK[0] + ", coul+placement :"+ arrayNB_OK[1]);
+        System.out.println("nb de couleurs OK : "+arrayNB_OK[0] + ", nb de coul+placement OK : "+ arrayNB_OK[1]);
         return arrayNB_OK; //return nbCoul_OK, nbCoul_PlacmtOK ;
     }
 
