@@ -5,6 +5,7 @@
 package mastermind_sf_lb;
 
 import static java.util.Arrays.compare;
+import java.util.Scanner;
 
 /**
  *
@@ -12,6 +13,23 @@ import static java.util.Arrays.compare;
  */
 public class Partie {
     
+    //choix difficulté partie --> + ou - de coups pour trouver la combS
+    public int Options() {
+        int coups = 0;
+        System.out.println("Choisissez un mode :\n1. Niveau facile\n2. Niveau moyen \n3. Niveau difficile");
+        Scanner sc = new Scanner(System.in);
+        int choixniveau = sc.nextInt();
+        if (choixniveau == 1) {
+            coups = 12;//partie de base (facile)
+        }
+        else if (choixniveau == 2) {
+            coups = 9; //partie niveau moyen
+        }
+        else if (choixniveau == 3) {
+            coups = 5; //partie niveau difficile
+        }
+        return coups;
+    }
     
     public void debuterPartie() {
         
@@ -20,8 +38,12 @@ public class Partie {
         Combinaison cs = new Combinaison();
         cs.combinaisonSecrete();
         
-        int coups = 12;//la partie dure au maximum 12 coups
-        for (int i = 0; i < coups; i++) {
+        int nbCoups = Options(); //choix difficulté du niveau
+        
+        for (int i = 0; i < nbCoups; i++) {
+            int coupsRestant = nbCoups;
+            coupsRestant--;
+            System.out.println("Vous disposez de "+coupsRestant+" coups. ");
             Combinaison cc = new Combinaison();
             cc.combinaisonChoisie(); //demande une combinaison au player
             
@@ -37,15 +59,11 @@ public class Partie {
                 System.out.println("Vous avez deviné le code secret !!! ");
             }
             else {
-                coups--;
-                System.out.println("Retentez votre chance, il vous reste "+coups+" coups. ");
+                System.out.println("Retentez votre chance");
             }
            
         }
         
-        //faire option "vous avez perdu / gagné" --> creer methode gagner (si gagner == false au bout des 12 coups --> perdu !)
-        
-        //partie facile / difficile : + ou - --> nb couleur dans TabCouleur & nb coups pour trouver code secret
     }
     
 }
