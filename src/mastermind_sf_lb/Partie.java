@@ -21,27 +21,27 @@ public class Partie {
         cs.combinaisonSecrete();
         
         int coups = 12;//la partie dure au maximum 12 coups
-        for (int i = 0; i <coups; i++) {
+        for (int i = 0; i < coups; i++) {
             Combinaison cc = new Combinaison();
             cc.combinaisonChoisie(); //demande une combinaison au player
             
             //System.out.println(cc.combChoisie);
             
             Combinaison compare = new Combinaison();
-            compare.Comparaison(cs.combSecret, cc.combChoisie); //.Comparaison(Combinaison[] combS , Combinaison[] combC);
+            int[] nbok = compare.Comparaison(cs.combSecret, cc.combChoisie); //.Comparaison(Combinaison[] combS , Combinaison[] combC);
             
+            Combinaison etregagnant = new Combinaison();
+            boolean gagner = etregagnant.Gagner(nbok);
             
-            /*Combinaison etregagnant = new Combinaison();
-            boolean gagner = etregagnant.Gagner(compare);
             if (gagner == true) {
                 System.out.println("Vous avez deviné le code secret !!! ");
             }
             else {
-                coups++;
-                System.out.println("Retentez votre chance, il vous reste "+coups+"coups. ");
+                coups--;
+                System.out.println("Retentez votre chance, il vous reste "+coups+" coups. ");
             }
            
-        }*/
+        }
         
         //faire option "vous avez perdu / gagné" --> creer methode gagner (si gagner == false au bout des 12 coups --> perdu !)
         

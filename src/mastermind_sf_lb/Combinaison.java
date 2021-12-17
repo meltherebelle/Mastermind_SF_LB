@@ -114,19 +114,20 @@ public class Combinaison {
         NB_OK[1] = nbCoul_PlacmtOK;
         int[] arrayNB_OK = new int[] {nbCoul_OK, nbCoul_PlacmtOK};
         System.out.println("nb de couleurs OK : "+arrayNB_OK[0] + ", nb de coul+placement OK : "+ arrayNB_OK[1]);
-        return arrayNB_OK;
+        return NB_OK;
     }
 
 
     public boolean Gagner(int [] nbOK) {
         //on veut récuperer le NB_OK de comparaison et l'affecter à nb_ok local
         int [] NB_OK = nbOK;
-        int[] arrayGagnant = new int[] {4, 4};
         //ensuite on compare si nb_ok dis qu'il y a un gagnant ou pas
-        if ( NB_OK.equals(arrayGagnant) ) {
+        if ( (NB_OK[0] == 0) && (NB_OK[1] == 4) ) {
+            System.out.println("nb ok gagnant");
             return true; //le code est deviné !
         }
         else {
+            System.out.println("nb ok pas gagnant");
             return false;
         }
     } 
