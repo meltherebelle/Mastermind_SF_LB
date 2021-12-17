@@ -73,35 +73,11 @@ public class Combinaison {
 
         int nbCoul_OK = 0;
         int nbCoul_PlacmtOK = 0;
-        String[] MorganC = {"0","0","0","0"};
-        String[] MorganS = {"0","0","0","0"};
+        //permet de checker le placement & couleur
+        boolean[] BoolC = new boolean [4]; 
+        boolean[] BoolS = new boolean [4]; 
         
-        
-        //ces 2 boucles servent à supprimer les doublons dans les choix de comb entrées
-        for (int i = 0; i < 4; i++) {
-            if(!MorganC[i].contains(combC[i])) {
-                MorganC[i] = combC[i]; //exist dans un tableau de string
-                System.out.println("doublon trouvé dans choisi "+MorganC[i]);
-            }
-            else {
-                MorganC[i]="x"; //rien --> pas de doublon
-                System.out.println(MorganC[i]);
-            } 
-        }
-        
-        for (int i = 0; i < 4; i++) {
-            if(!MorganS[i].contains(combS[i])) {
-                MorganS[i] = combS[i];
-                System.out.println("doublon trouvé dans secret "+MorganS[i]);
-            }
-            else {
-                MorganS[i]="y"; //rien --> pas de doublon
-                System.out.println(MorganS[i]);
-            } 
-        }
-        
-        //System.out.println(oui);
-        
+       /* 
         for (int i=0; i<4; i++){
             
             for (int j=0; j<4; j++) { //A CORRIGER pour rendre nb coul OK fonctionnel
@@ -118,15 +94,14 @@ public class Combinaison {
                 }
             }
             
-        }
-        
-        /* int [] NB_OK = new int[2];
+        }*/
+       
+        int [] NB_OK = new int[2];
         NB_OK[0] = nbCoul_OK;
         NB_OK[1] = nbCoul_PlacmtOK;
-        System.out.print(Arrays.toString(NB_OK));*/
         int[] arrayNB_OK = new int[] {nbCoul_OK, nbCoul_PlacmtOK};
         System.out.println("nb de couleurs OK : "+arrayNB_OK[0] + ", nb de coul+placement OK : "+ arrayNB_OK[1]);
-        return arrayNB_OK; //return nbCoul_OK, nbCoul_PlacmtOK ;
+        return arrayNB_OK;
     }
 
 
