@@ -40,6 +40,7 @@ public class Partie {
                 coups++;
                 System.out.println("Retentez votre chance, il vous reste "+coups+"coups. ");
             }
+           
         }*/
         
         //faire option "vous avez perdu / gagné" --> creer methode gagner (si gagner == false au bout des 12 coups --> perdu !)

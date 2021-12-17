@@ -74,27 +74,40 @@ public class Combinaison {
         int nbCoul_OK = 0;
         int nbCoul_PlacmtOK = 0;
         //permet de checker le placement & couleur
-        boolean[] BoolC = new boolean [4]; 
-        boolean[] BoolS = new boolean [4]; 
+        boolean[] BoolC = new boolean [4];
+        boolean[] BoolS = new boolean [4];
         
-       /* 
-        for (int i=0; i<4; i++){
-            
-            for (int j=0; j<4; j++) { //A CORRIGER pour rendre nb coul OK fonctionnel
-                //on détermine le nb de couleurs présentent à la fois dans la comb Chosie et Secrete
-                if ( MorganS[i].equals(MorganC[j]) ) { //combC[j].equals(combS[i])
-                    nbCoul_OK +=1;
-                    System.out.println("+1 couleur OK");
+        //comparaison des couleurs + placement
+        for (int i = 0; i < 4 ; i++) {
+            //on regarde d'abord si les deux tableaux ne sont pas déjà checké
+            if ( (BoolC[i] != true) && (BoolS[i] != true) ) {
+                //si il ne sont pas encore checké on compare la combC et combS
+                if (combS[i].equals(combC[i])) {
+                    //on check les tableaux de booleans
+                    BoolC[i] = true;
+                    BoolS[i] = true;
+                    nbCoul_PlacmtOK += 1;
                 }
-                
-                //on détermine le nb de couleurs présentent à la fois dans la comb Chosie et Secrete & aussi bien placées!
-                if ( (combC[j].equals(combS[i])) && (combC[i].equals(combS[i])) ) {
-                    System.out.println("+1 couleur placée OK");
-                    nbCoul_PlacmtOK+=1;
+            }  
+        }
+        
+        //si pas checké on regarde si la couleur choisie de la case que l'on regarde est identique à une des couleurs du secret / sinon on ne vérifie pas
+        //comparaison des couleurs
+        for (int i = 0; i < 4; i ++) {
+            //on regarde si bolC n'est pas déjà checké
+            if ( (BoolC[i] != true) && (BoolC[i] != true) ) {
+                //si pas encore checké on regarde si la couleur[i] de combC correspond à une des couleurs de combS
+                for (int j = 0; j < 4; j++) {
+                    if (combC[i].equals(combS[j])) {
+                        //on check le tableau des booleans
+                        BoolC[i] = true;
+                        BoolS[i] = true;
+                        nbCoul_OK += 1;
+                        break;
+                    }
                 }
             }
-            
-        }*/
+        }
        
         int [] NB_OK = new int[2];
         NB_OK[0] = nbCoul_OK;
